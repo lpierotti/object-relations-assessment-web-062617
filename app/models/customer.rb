@@ -18,28 +18,25 @@ class Customer
   end
 
   def self.find_by_name(name)
-  	@@all.find do |customer|
+  	self.all.find do |customer|
   		customer.full_name == name
   	end
   end
 
   def self.find_all_by_first_name(name)
-  	@@all.find_all do |customer|
+  	self.all.find_all do |customer|
   		customer.first_name == name
   	end
   end
 
   def self.all_names
-  	@@all.map do |customer|
+  	self.all.map do |customer|
   		customer.full_name
   	end
   end
 
   def add_review(restaurant, content)
-  	review = Review.new(content)
-  	review.restaurant = restaurant
-  	review.customer = self
-  	review
+  	review = Review.new(restaurant, self, content)
   end
 
 end
